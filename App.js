@@ -8,7 +8,8 @@ class App extends Component {
   constructor () {
     super()
     this.state = {
-      solution: 'WINNING',
+      solutionArray: ['WINNING','STORK','BABY','ALLIGATOR','DOG','PEOPLE','TRAIN','AIRPLANE','POST', 'CHINA'],
+      solution: 'STEAK',
       used: [],
       matched: []
     }
@@ -19,6 +20,11 @@ class App extends Component {
     let matched = this.state.matched
     let solution = this.state.solution
     let used = this.state.used
+
+    this.setState({
+      used: this.state.used,
+      matched: this.state.matched
+    })
 
     used.push(character)
 
@@ -37,14 +43,19 @@ class App extends Component {
         matched: []
       })
     }
-
-    this.setState({
-      used: this.state.used,
-      matched: this.state.matched
-    })
   }
+  // randomWordIndex = () => {
+  //   let num = Math.floor(Math.random() * (this.state.solutionArray.length))
+  //   return num
+  // }
+  //
+  // setSolution = (num) => {
+  //   setState({solution: solutionArray[num]})
+  //
+  // }
 
   render () {
+
     return <div className='App'>
       <h1>Hangman!</h1>
       <Word solution={this.state.solution} used={this.state.used} />

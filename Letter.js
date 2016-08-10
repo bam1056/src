@@ -11,6 +11,7 @@ class Letter extends Component {
     if (this.props.revealed) {
       cx.push('revealed')
     }
+    console.log(cx)
     // join the class names together with spaces
     return <span className={cx.join(' ')}>{this.props.value}</span>
   }
