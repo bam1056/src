@@ -5,7 +5,6 @@ class Board extends Component {
   render () {
     return (
       <div className='Board'>
-        <h1>HELLO IM THE BOARD</h1>
         <Alphabet onPlay={this.props.onPlay}/>
 
       </div>
@@ -16,13 +15,12 @@ class Board extends Component {
 class Alphabet extends Component {
   wholeAlphabet () {
     return [...Array(26).keys()].map(
-      (i) => <AlphaLetter onPlay={this.props.onPlay} character={String.fromCharCode(65 + i)}/>
+      (i) => <AlphaLetter onPlay={this.props.onPlay} character={String.fromCharCode(65 + i)} disabled={this.props.disabled} />
     )
   }
-
   render () {
     return (
-      <div>
+      <div className='AlphaLetter'>
         {this.wholeAlphabet()}
       </div>
     )
@@ -30,11 +28,19 @@ class Alphabet extends Component {
 }
 
 class AlphaLetter extends Component {
+  constructor () {
+    super()
+    this.state = {
+      used: false
+    }
+  }
   handleClick = () => {
     this.props.onPlay(this.props.character)
+    this.setState({used: true})
+
   }
   render () {
-    return <button onClick={this.handleClick}>{this.props.character}</button>;
+    return <button disabled={this.state.used} onClick={this.handleClick}>{this.props.character}</button>;
   }
 }
  export default Board
