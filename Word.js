@@ -3,8 +3,7 @@ import Letter from './Letter'
 import './Word.css'
 
 class Word extends Component {
-  render() {
-
+  render () {
     // This is the kicker right here. We're going to split the string into an array
     // of each letters, and `map` over that, making a <Letter /> component for each.
     // Then we can put that right into our <div> in the output.

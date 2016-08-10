@@ -9,11 +9,16 @@ class App extends Component {
     super()
     this.state = {
       solutionArray: ['WINNING','STORK','BABY','ALLIGATOR','DOG','PEOPLE','TRAIN','AIRPLANE','POST', 'CHINA'],
-      solution: 'STEAK',
+      solution: '',
       used: [],
       matched: []
     }
   }
+componentWillMount = () => {
+  let num = Math.floor(Math.random() * (this.state.solutionArray.length))
+   this.setState({solution: this.state.solutionArray[num]})
+}
+
 
   onPlay = (character) => {
     console.log(character)
@@ -44,18 +49,8 @@ class App extends Component {
       })
     }
   }
-  // randomWordIndex = () => {
-  //   let num = Math.floor(Math.random() * (this.state.solutionArray.length))
-  //   return num
-  // }
-  //
-  // setSolution = (num) => {
-  //   setState({solution: solutionArray[num]})
-  //
-  // }
 
   render () {
-
     return <div className='App'>
       <h1>Hangman!</h1>
       <Word solution={this.state.solution} used={this.state.used} />
